@@ -1,0 +1,75 @@
+---
+---
+
+<section id="contact" class="py-24 px-6 border-t border-[#1F1F23]">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-baseline gap-3 mb-3 fade-in">
+      <span class="font-mono text-sm text-[#4F8BFF]">0x03</span>
+      <h2 class="text-2xl font-semibold text-[#F2F2F0]">Contacto</h2>
+    </div>
+
+    <p class="text-[#7A7A80] mb-10 max-w-xl fade-in text-sm">
+      Abierto a oportunidades como desarrollador junior. Respondo en menos de 24h.
+    </p>
+
+    <div class="fade-in border border-[#1F1F23] bg-[#131316] divide-y divide-[#1F1F23] max-w-2xl">
+      <div class="flex items-center justify-between p-4">
+        <div class="flex items-center gap-3 min-w-0">
+          <span class="font-mono text-xs text-[#7A7A80] uppercase tracking-wide w-16 shrink-0">email</span>
+          <a
+            href="mailto:nicolasmazzilli2004@gmail.com"
+            class="text-[#F2F2F0] hover:text-[#4F8BFF] transition-colors duration-150 truncate"
+          >
+            nicolasmazzilli2004@gmail.com
+          </a>
+        </div>
+        <button
+          id="copy-email-btn"
+          class="px-2.5 py-1 font-mono text-[11px] text-[#7A7A80] border border-[#2A2A30] hover:border-[#4F8BFF] hover:text-[#F2F2F0] transition-colors duration-150 shrink-0 ml-3"
+          aria-label="Copiar correo"
+        >
+          <span id="copy-email-text">copiar</span>
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between p-4">
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-xs text-[#7A7A80] uppercase tracking-wide w-16 shrink-0">github</span>
+          <a
+            href="https://github.com/NickBullicik"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[#F2F2F0] hover:text-[#4F8BFF] transition-colors duration-150"
+          >
+            @NickBullicik
+          </a>
+        </div>
+        <span class="font-mono text-[11px] text-[#7A7A80]">&rarr;</span>
+      </div>
+
+      <div class="flex items-center justify-between p-4">
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-xs text-[#7A7A80] uppercase tracking-wide w-16 shrink-0">ubic.</span>
+          <span class="text-[#F2F2F0]">Alicante, Espa&ntilde;a</span>
+        </div>
+        <span class="font-mono text-[11px] text-[#7A7A80]">presencial / remoto</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('copy-email-btn');
+  const text = document.getElementById('copy-email-text');
+  if (btn && text) {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('nicolasmazzilli2004@gmail.com');
+        text.textContent = 'copiado';
+        setTimeout(() => { text.textContent = 'copiar'; }, 1800);
+      } catch {
+        text.textContent = 'error';
+      }
+    });
+  }
+</script>

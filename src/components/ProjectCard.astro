@@ -1,0 +1,68 @@
+---
+interface Props {
+  number?: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  demoUrl?: string;
+  githubUrl: string;
+}
+
+const { number, title, description, image, tags, demoUrl, githubUrl } = Astro.props;
+---
+
+<article class="group fade-in">
+  <div class="aspect-video bg-[#131316] border border-[#1F1F23] overflow-hidden mb-4 group-hover:border-[#4F8BFF]/60 transition-colors duration-200 relative">
+    <img
+      src={image}
+      alt={`Captura de ${title}`}
+      class="w-full h-full object-cover"
+      loading="lazy"
+      onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-full font-mono text-xs text-[#7A7A80]\\'>[ Aplicación pendiente ]</div>'"
+    />
+  </div>
+
+  <div>
+    <div class="flex items-baseline justify-between mb-2">
+      <div class="flex items-baseline gap-2">
+        {number && <span class="font-mono text-xs text-[#4F8BFF]">{number}</span>}
+        <h3 class="text-lg font-semibold text-[#F2F2F0]">{title}</h3>
+      </div>
+      <span class="font-mono text-[10px] text-[#7A7A80]">{tags[0]}</span>
+    </div>
+
+    <p class="text-[#7A7A80] text-sm leading-relaxed mb-4">
+      {description}
+    </p>
+
+    <div class="flex flex-wrap gap-x-2 gap-y-1 mb-4 font-mono text-[10px] text-[#7A7A80]">
+      {tags.map((tag, i) => (
+        <span>
+          {tag}{i < tags.length - 1 && <span class="text-[#2A2A30] ml-2">&middot;</span>}
+        </span>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-5 text-sm font-mono pt-3 border-t border-[#1F1F23]">
+      <a
+        href={githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[#F2F2F0] hover:text-[#4F8BFF] transition-colors duration-150"
+      >
+        c&oacute;digo &rarr;
+      </a>
+      {demoUrl && (
+        <a
+          href={demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[#4F8BFF] hover:text-[#6FA0FF] transition-colors duration-150"
+        >
+          demo &rarr;
+        </a>
+      )}
+    </div>
+  </div>
+</article>
