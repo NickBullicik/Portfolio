@@ -9,14 +9,37 @@
     </a>
     <div class="flex items-center gap-7 text-sm">
       <a href="#about" class="text-[#7A7A80] hover:text-[#F2F2F0] transition-colors duration-200">
-        <span class="font-mono text-[#4F8BFF]/70">01.</span> sobre mi
+        <span class="font-mono text-[#4F8BFF]/70">01.</span>
+        <span data-lang="es">sobre mi</span><span data-lang="en">about</span>
       </a>
       <a href="#projects" class="text-[#7A7A80] hover:text-[#F2F2F0] transition-colors duration-200">
-        <span class="font-mono text-[#4F8BFF]/70">02.</span> proyectos
+        <span class="font-mono text-[#4F8BFF]/70">02.</span>
+        <span data-lang="es">proyectos</span><span data-lang="en">projects</span>
       </a>
       <a href="#contact" class="text-[#7A7A80] hover:text-[#F2F2F0] transition-colors duration-200">
-        <span class="font-mono text-[#4F8BFF]/70">03.</span> contacto
+        <span class="font-mono text-[#4F8BFF]/70">03.</span>
+        <span data-lang="es">contacto</span><span data-lang="en">contact</span>
       </a>
+      <button
+        id="lang-toggle"
+        class="font-mono text-xs text-[#7A7A80] hover:text-[#F2F2F0] border border-[#2A2A30] hover:border-[#4F8BFF] px-2 py-1 transition-colors duration-150"
+        aria-label="Cambiar idioma"
+      >
+        <span data-lang="es">EN</span><span data-lang="en">ES</span>
+      </button>
     </div>
   </div>
 </nav>
+
+<script>
+  const btn = document.getElementById('lang-toggle');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-lang') || 'es';
+      const next = current === 'es' ? 'en' : 'es';
+      document.documentElement.setAttribute('data-lang', next);
+      document.documentElement.setAttribute('lang', next);
+      try { localStorage.setItem('lang', next); } catch {}
+    });
+  }
+</script>

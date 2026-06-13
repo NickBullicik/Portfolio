@@ -88,3 +88,9 @@ body {
   color: var(--color-accent);
   opacity: 0.5;
 }
+
+/* Sistema de idioma — oculta el texto del idioma no activo */
+html[data-lang="es"] [data-lang="en"],
+html[data-lang="en"] [data-lang="es"] {
+  display: none !important;
+}

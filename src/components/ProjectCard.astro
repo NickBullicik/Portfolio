@@ -2,14 +2,15 @@
 interface Props {
   number?: string;
   title: string;
-  description: string;
+  descriptionEs: string;
+  descriptionEn: string;
   image: string;
   tags: string[];
   demoUrl?: string;
   githubUrl: string;
 }
 
-const { number, title, description, image, tags, demoUrl, githubUrl } = Astro.props;
+const { number, title, descriptionEs, descriptionEn, image, tags, demoUrl, githubUrl } = Astro.props;
 ---
 
 <article class="group fade-in">
@@ -33,7 +34,8 @@ const { number, title, description, image, tags, demoUrl, githubUrl } = Astro.pr
     </div>
 
     <p class="text-[#7A7A80] text-sm leading-relaxed mb-4">
-      {description}
+      <span data-lang="es">{descriptionEs}</span>
+      <span data-lang="en">{descriptionEn}</span>
     </p>
 
     <div class="flex flex-wrap gap-x-2 gap-y-1 mb-4 font-mono text-[10px] text-[#7A7A80]">
@@ -51,7 +53,8 @@ const { number, title, description, image, tags, demoUrl, githubUrl } = Astro.pr
         rel="noopener noreferrer"
         class="text-[#F2F2F0] hover:text-[#4F8BFF] transition-colors duration-150"
       >
-        c&oacute;digo &rarr;
+        <span data-lang="es">c&oacute;digo &rarr;</span>
+        <span data-lang="en">code &rarr;</span>
       </a>
       {demoUrl && (
         <a
