@@ -25,4 +25,13 @@ La primera medición del rediseño dio 92. Lo subieron a 98 dos cambios:
 
 Los informes JSON están en la carpeta de la línea base del proyecto de diseño (`lh-home-*.json` para antes y `lh-rediseno-*.json` para después).
 
-Hay que repetir la medición en producción después del merge.
+## En producción (26-10-2026, tras el merge)
+
+Lighthouse 13.5.0 contra `https://nicolasmazzilli.vercel.app`.
+
+| Página | Formato | Rendimiento | Accesibilidad | Buenas prácticas | SEO | FCP | LCP | TBT | CLS |
+|---|---|---|---|---|---|---|---|---|---|
+| `/` | Móvil | 97 | 100 | 100 | 100 | 1,3 s | 1,6 s | 0 ms | 0 |
+| `/en/` | Móvil | 98 | 100 | 100 | 100 | 1,2 s | 1,5 s | 0 ms | 0 |
+| `/` | Escritorio | 100 | 100 | 100 | 100 | 0,3 s | 0,4 s | 0 ms | 0 |
+| `/en/` | Escritorio | 100 | 100 | 100 | 100 | 0,3 s | 0,5 s | 0 ms | 0 |
