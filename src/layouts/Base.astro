@@ -1,0 +1,86 @@
+---
+import { Font } from 'astro:assets';
+import Analytics from '@vercel/analytics/astro';
+import Icons from '../components/Icons.astro';
+import { site } from '../data/site';
+import type { Dict } from '../i18n/es';
+import '../styles/global.css';
+
+interface Props {
+  t: Dict;
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const { t, title = t.meta.title, description = t.meta.description, noindex = false } = Astro.props;
+const siteUrl = Astro.site ?? new URL('https://nicolasmazzilli.vercel.app');
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const esUrl = new URL('/', siteUrl).href;
+const enUrl = new URL('/en/', siteUrl).href;
+const ogImage = new URL(t.lang === 'es' ? '/og.png' : '/og-en.png', siteUrl).href;
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: t.meta.jobTitle,
+  url: t.lang === 'es' ? esUrl : enUrl,
+  email: `mailto:${site.email}`,
+  address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'ES' },
+  sameAs: [site.github],
+  knowsAbout: ['Java', 'Spring Boot', 'TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Docker', 'Flutter'],
+};
+---
+
+<!doctype html>
+<html lang={t.lang} class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>document.documentElement.classList.replace('no-js', 'js');</script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {
+      !noindex && (
+        <>
+          <link rel="alternate" hreflang="es" href={esUrl} />
+          <link rel="alternate" hreflang="en" href={enUrl} />
+          <link rel="alternate" hreflang="x-default" href={esUrl} />
+        </>
+      )
+    }
+    <meta name="theme-color" content="white" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={t.lang === 'es' ? 'es_ES' : 'en_US'} />
+    <meta property="og:locale:alternate" content={t.lang === 'es' ? 'en_US' : 'es_ES'} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t.meta.ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={t.meta.ogAlt} />
+
+    <Font cssVariable="--font-geist" preload />
+    <Font cssVariable="--font-geist-mono" />
+    {!noindex && <script type="application/ld+json" set:html={JSON.stringify(person)} />}
+  </head>
+  <body>
+    <a class="skip" href="#contenido">{t.skip}</a>
+    <Icons />
+    <slot />
+    <Analytics />
+  </body>
+</html>

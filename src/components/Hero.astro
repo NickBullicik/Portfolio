@@ -1,53 +1,429 @@
 ---
+import { Image } from 'astro:assets';
+import CopyButton from './CopyButton.astro';
+import { site } from '../data/site';
+import type { Dict } from '../i18n/es';
+import nizzHoy from '../assets/shots/nizz-hoy-d.png';
+import nizzFicharOk from '../assets/shots/nizz-fichar-ok-m.png';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+const words = ['NICOLÁS', 'MAZZILLI'];
+const [hookBefore, hookStrong, hookAfter] = t.hero.hook;
 ---
 
-<section class="min-h-[85vh] flex items-center pt-20 pb-16">
-  <div class="max-w-5xl mx-auto px-6 w-full">
-    <p class="code-comment mb-8 fade-in">
-      <span data-lang="es">graduado en DAM &mdash; buscando primer empleo</span>
-      <span data-lang="en">DAM graduate &mdash; looking for first job</span>
-    </p>
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap">
+    <p class="status"><span class="live-dot" aria-hidden="true"></span>{t.hero.status}</p>
 
-    <h1 class="text-5xl md:text-7xl font-bold text-[#F2F2F0] mb-6 fade-in tracking-tight leading-[1.05]">
-      Nicol&aacute;s Mazzilli<span class="caret"></span>
+    <h1 class="flaps" id="hero-title" translate="no" data-flaps>
+      <span class="sr-only">{site.name}</span>
+      {
+        words.map((word) => (
+          <span class="flap-word" aria-hidden="true">
+            {[...word].map((letter) => (
+              <span class="flap">{letter}</span>
+            ))}
+          </span>
+        ))
+      }
     </h1>
 
-    <p class="text-xl md:text-2xl text-[#7A7A80] mb-2 fade-in">
-      <span data-lang="es">Desarrollador de aplicaciones.</span>
-      <span data-lang="en">Application developer.</span>
-    </p>
-    <p class="text-base text-[#7A7A80] mb-10 fade-in max-w-xl leading-relaxed">
-      <span data-lang="es">Construyo cosas que funcionan: web fullstack, m&oacute;vil, escritorio y automatizaciones. Aprendiendo r&aacute;pido y disponible desde ya.</span>
-      <span data-lang="en">I build things that work: fullstack web, mobile, desktop and automation. Fast learner, available right now.</span>
-    </p>
-
-    <div class="flex flex-wrap items-center gap-3 fade-in">
-      <a
-        href="#projects"
-        class="px-5 py-2.5 bg-[#4F8BFF] text-[#0A0A0B] text-sm font-medium hover:bg-[#6FA0FF] transition-colors duration-150"
-      >
-        <span data-lang="es">Ver proyectos</span>
-        <span data-lang="en">See projects</span>
-      </a>
-      <a
-        href="/docs/CV_NicolasMazzilli.pdf"
-        target="_blank"
-        class="px-5 py-2.5 border border-[#2A2A30] text-[#F2F2F0] text-sm font-medium hover:border-[#4F8BFF] hover:text-[#4F8BFF] transition-colors duration-150"
-      >
-        <span data-lang="es">Descargar CV</span>
-        <span data-lang="en">Download CV</span>
-      </a>
+    <div class="hero-copy">
+      <p class="hero-role">{t.hero.role}</p>
+      <p class="hero-hook">{hookBefore}<strong>{hookStrong}</strong>{hookAfter}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href={`mailto:${site.email}`}
+          ><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>{t.writeMe}</a
+        >
+        <CopyButton class="btn btn-secondary btn-copy" label={t.hero.copyEmail} doneLabel={t.contact.copied} />
+      </div>
+      <p class="hero-mail"><a href={`mailto:${site.email}`}>{site.email}</a></p>
     </div>
 
-    <div class="mt-16 fade-in font-mono text-xs text-[#7A7A80] flex flex-wrap gap-x-6 gap-y-1">
-      <span><span class="text-[#4F8BFF]/70">loc:</span> Alicante, ES</span>
-      <span><span class="text-[#4F8BFF]/70">
-        <span data-lang="es">edad:</span><span data-lang="en">age:</span>
-      </span> 22</span>
-      <span><span class="text-[#4F8BFF]/70">stack:</span>
-        <span data-lang="es">fullstack + m&oacute;vil</span>
-        <span data-lang="en">fullstack + mobile</span>
-      </span>
+    <div class="hero-visual">
+      <div class="hero-shot">
+        <div class="frame">
+          <div class="frame-bar" aria-hidden="true">
+            <span class="frame-dots"><i></i><i></i><i></i></span>
+            <span class="frame-url"><svg class="icon"><use href="#i-lock"></use></svg>nizz.es</span>
+            <span class="frame-bar-end"></span>
+          </div>
+          <Image
+            src={nizzHoy}
+            alt={t.alt.nizzHoy}
+            widths={[480, 720, 960, 1200, 1440]}
+            sizes="(min-width: 1264px) 1200px, calc(100vw - 2 * clamp(20px, 5vw, 64px))"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="phone">
+          <div class="phone-screen">
+            <Image
+              src={nizzFicharOk}
+              alt={t.alt.nizzFicharOk}
+              widths={[240, 390, 640]}
+              sizes="(min-width: 1024px) 268px, (min-width: 720px) 182px, 108px"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="hero-caption">
+        <span class="via" aria-hidden="true"><span><small>{t.platformSign}</small>1</span></span>
+        <span class="cap-name" translate="no">NIZZ</span>
+        <span class="chip-live">{t.inService}</span>
+        <span class="cap-text">{t.hero.caption}</span>
+        <a class="link link-arrow cap-link" href="#nizz"
+          >{t.hero.howItWorks}<svg class="icon icon-down" aria-hidden="true"><use href="#i-down"></use></svg></a
+        >
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-top: clamp(40px, 5.5vw, 64px);
+    background: linear-gradient(
+      to bottom,
+      var(--color-bg) 0,
+      var(--color-bg) calc(100% - 340px),
+      var(--color-bg-subtle) calc(100% - 340px)
+    );
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 32px;
+    padding: 0 14px 0 12px;
+    border-radius: 999px;
+    background: var(--color-bg-subtle);
+    color: var(--color-fg-2);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* El nombre en fichas claras. Cada ficha mide lo que su letra para que se lea como un nombre;
+     el texto final está en el HTML y la animación solo gira por encima. */
+  .flaps {
+    --size: clamp(2.5rem, 0.9rem + 4.4vw, 4.5rem);
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: calc(var(--size) * 0.3);
+    row-gap: calc(var(--size) * 0.12);
+    margin-top: 24px;
+    font-size: var(--size);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .flap-word {
+    display: flex;
+    gap: 3px;
+  }
+
+  .flap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-width: 0.62em;
+    height: 1.2em;
+    padding-inline: 0.07em;
+    padding-top: 0.06em;
+    border-radius: 0.1em;
+    background: var(--color-tile);
+    overflow: hidden;
+  }
+
+  .flap::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    top: 50%;
+    z-index: 2;
+    height: 1px;
+    background: var(--color-bg);
+    box-shadow: 0 -1px 0 color-mix(in srgb, var(--color-ink) 5%, transparent);
+  }
+
+  .flap :global(.ov) {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    padding-top: 0.06em;
+    background: var(--color-tile);
+  }
+
+  .flap :global(.ov span) {
+    display: block;
+  }
+
+  .hero-copy {
+    max-width: 760px;
+  }
+
+  .hero-role {
+    margin-top: 20px;
+    color: var(--color-fg-2);
+    font-size: clamp(1.375rem, 1.05rem + 1.1vw, 1.875rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .hero-hook {
+    max-width: 36ch;
+    margin-top: 14px;
+    color: var(--color-fg-2);
+    font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.25rem);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .hero-hook strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .hero-actions :global(.btn-copy) {
+    min-width: 172px;
+  }
+
+  .hero-mail {
+    margin-top: 6px;
+    color: var(--color-fg-3);
+    font-size: 0.9375rem;
+  }
+
+  .hero-mail a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--spacing-tap);
+    transition: color var(--duration-base) var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hero-mail a:hover {
+      color: var(--color-ink);
+    }
+  }
+
+  .hero-visual {
+    position: relative;
+    margin-top: clamp(36px, 4.5vw, 52px);
+    padding-bottom: clamp(56px, 7vw, 80px);
+  }
+
+  .hero-shot {
+    position: relative;
+  }
+
+  .frame {
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background: var(--color-bg);
+    box-shadow: var(--shadow-frame);
+  }
+
+  .frame-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 40px;
+    padding: 0 14px;
+    background: var(--color-frame-bar);
+  }
+
+  .frame-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .frame-dots i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-frame-dot);
+  }
+
+  .frame-url {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    max-width: 340px;
+    height: 24px;
+    margin-inline: auto;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    color: var(--color-fg-3);
+    font-size: 0.75rem;
+    line-height: 1;
+  }
+
+  .frame-url .icon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .frame-bar-end {
+    width: 48px;
+  }
+
+  .frame :global(img) {
+    width: 100%;
+  }
+
+  /* El móvil asoma por encima del marco, en el hueco que deja el texto a la derecha. */
+  .phone {
+    position: absolute;
+    top: -250px;
+    right: 36px;
+    width: 286px;
+  }
+
+  .hero-caption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 18px;
+    margin-top: 22px;
+    color: var(--color-fg-3);
+    font-size: 0.9375rem;
+  }
+
+  .cap-name {
+    color: var(--color-ink);
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+
+  .cap-text {
+    flex: 1 1 320px;
+  }
+
+  .cap-link {
+    margin-left: auto;
+  }
+
+  @media (max-width: 1023px) {
+    .phone {
+      top: -150px;
+      right: 24px;
+      width: 200px;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+    }
+  }
+
+  @media (max-width: 719px) {
+    /* En móvil el cambio de fondo se ancla a media altura del marco, para que no parta el letrero de NIZZ de su pie. */
+    .hero {
+      isolation: isolate;
+      overflow: clip;
+      background: var(--color-bg);
+    }
+
+    .hero-shot::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      width: 100vw;
+      height: 200vh;
+      background: var(--color-bg-subtle);
+      transform: translateX(-50%);
+    }
+
+    .flaps {
+      --size: clamp(2.25rem, 12.4vw, 3.5rem);
+      margin-top: 20px;
+    }
+
+    .flap-word {
+      gap: 2px;
+    }
+
+    .hero-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-actions > :global(*) {
+      width: 100%;
+      min-width: 0 !important;
+      padding: 0 12px;
+    }
+
+    .hero-mail {
+      font-size: 0.875rem;
+    }
+
+    .hero-shot {
+      padding-right: 48px;
+    }
+
+    .frame-bar {
+      height: 28px;
+      padding: 0 10px;
+    }
+
+    .frame-dots i {
+      width: 7px;
+      height: 7px;
+    }
+
+    .frame-url {
+      height: 18px;
+      font-size: 0.625rem;
+    }
+
+    .frame-bar-end {
+      width: 28px;
+    }
+
+    .phone {
+      top: auto;
+      right: 0;
+      bottom: -36px;
+      width: 118px;
+      padding: 5px;
+      border-radius: 22px;
+    }
+
+    .phone .phone-screen {
+      border-radius: 18px;
+    }
+
+    .hero-caption {
+      margin-top: 56px;
+    }
+
+    .cap-link {
+      margin-left: 0;
+    }
+  }
+</style>

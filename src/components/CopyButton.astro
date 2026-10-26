@@ -1,0 +1,48 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  class?: string;
+  label: string;
+  doneLabel: string;
+}
+
+const { class: className, label, doneLabel } = Astro.props;
+---
+
+<button class={className} type="button" data-copy={site.email} data-done-label={doneLabel}>
+  <svg class="icon icon-copy" aria-hidden="true"><use href="#i-copy"></use></svg>
+  <svg class="icon icon-check" aria-hidden="true"><use href="#i-check"></use></svg>
+  <span data-copy-label>{label}</span>
+</button>
+
+<script>
+  import { showToast } from '../scripts/toast';
+
+  const timers = new WeakMap<HTMLElement, number>();
+
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    const label = btn.querySelector<HTMLElement>('[data-copy-label]');
+    if (!label) return;
+    const idle = label.textContent ?? '';
+    btn.addEventListener('click', async () => {
+      const email = btn.dataset.copy ?? '';
+      window.clearTimeout(timers.get(btn));
+      try {
+        await navigator.clipboard.writeText(email);
+        btn.classList.add('is-done');
+        label.textContent = btn.dataset.doneLabel ?? idle;
+        showToast('copied');
+      } catch {
+        showToast('copyFailed');
+      }
+      timers.set(
+        btn,
+        window.setTimeout(() => {
+          btn.classList.remove('is-done');
+          label.textContent = idle;
+        }, 2000),
+      );
+    });
+  });
+</script>

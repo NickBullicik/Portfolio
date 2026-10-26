@@ -1,0 +1,276 @@
+---
+import type { Dict } from '../i18n/es';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+const lastIndex = t.background.stops.length - 1;
+---
+
+<section class="section section-subtle" id="trayectoria" aria-labelledby="trayectoria-title">
+  <div class="wrap">
+    <h2 class="h2" id="trayectoria-title">{t.background.title}</h2>
+    <div class="line-wrap">
+      <span class="line-track" aria-hidden="true"></span>
+      <span class="line-fill" aria-hidden="true" data-line-fill></span>
+      <ol class="line" data-line>
+        {
+          t.background.stops.map((stop, i) => (
+            <li class:list={['stop', { 'stop-now': i === lastIndex }]}>
+              <span class="dot" aria-hidden="true" />
+              <p class="when mono">{stop.when}</p>
+              <p class="where">{stop.where}</p>
+              <p class="what">{stop.what}</p>
+            </li>
+          ))
+        }
+        <li class="stop stop-end">
+          <span class="dot" aria-hidden="true"></span>
+          <p class="when">{t.background.nextStop}</p>
+          <p class="where">{t.background.yourCompany}</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="uses">
+      <h2 class="h2" id="uses-title">{t.uses.title}</h2>
+      <div class="groups">
+        {
+          t.uses.groups.map((group) => (
+            <div class="group">
+              <h3 class="group-label">{group.label}</h3>
+              <ul class="stack" translate="no">
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initLine } from '../scripts/motion';
+
+  initLine();
+</script>
+
+<style>
+  /* Trayectoria: una línea de Cercanías que termina en la empresa que lee esto. */
+  .line-wrap {
+    --dot: 22px;
+    --gap: 24px;
+    position: relative;
+    margin-top: clamp(48px, 6vw, 72px);
+  }
+
+  .line {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--gap);
+  }
+
+  .line-track,
+  .line-fill {
+    position: absolute;
+    top: calc(var(--dot) / 2 - 2px);
+    right: calc((100% - 4 * var(--gap)) / 5 - var(--dot) / 2);
+    left: calc(var(--dot) / 2);
+    height: 4px;
+    border-radius: 2px;
+  }
+
+  .line-track {
+    background: var(--color-line-strong);
+  }
+
+  .line-fill {
+    background: var(--color-adif);
+    transform-origin: left center;
+  }
+
+  .stop {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .dot {
+    position: relative;
+    z-index: 1;
+    width: var(--dot);
+    height: var(--dot);
+    margin-bottom: 18px;
+    border: 4px solid var(--color-adif);
+    border-radius: 50%;
+    background: var(--color-bg);
+  }
+
+  .stop-now .dot {
+    background: var(--color-amber);
+  }
+
+  .stop-end .dot {
+    width: 30px;
+    height: 30px;
+    margin: -4px 0 14px -4px;
+    border-width: 7px;
+  }
+
+  .when {
+    color: var(--color-fg-3);
+    font-size: 0.875rem;
+  }
+
+  .where {
+    font-size: 1.1875rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .what {
+    max-width: 28ch;
+    color: var(--color-fg-2);
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  .stop-end .where {
+    color: var(--color-adif);
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+  }
+
+  /* Lo que uso, agrupado por área */
+  .uses {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+    margin-top: clamp(72px, 9vw, 112px);
+  }
+
+  .uses > .h2 {
+    grid-column: 1 / span 4;
+  }
+
+  .groups {
+    grid-column: 5 / span 8;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 32px;
+  }
+
+  .group-label {
+    color: var(--color-fg-3);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .stack li {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 0 16px 0 14px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .stack li::before {
+    content: '';
+    width: 16px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-adif);
+  }
+
+  @media (max-width: 1023px) {
+    .line {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      row-gap: 40px;
+    }
+
+    .line-track,
+    .line-fill {
+      display: none;
+    }
+
+    .uses > .h2,
+    .groups {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 719px) {
+    .uses {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .line {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .line-track,
+    .line-fill {
+      display: block;
+      top: 6px;
+      right: auto;
+      bottom: 26px;
+      left: calc(var(--dot) / 2 - 2px);
+      width: 4px;
+      height: auto;
+    }
+
+    .line-fill {
+      transform-origin: center top;
+    }
+
+    .stop {
+      display: grid;
+      grid-template-columns: var(--dot) 1fr;
+      column-gap: 20px;
+      row-gap: 2px;
+      padding-bottom: 32px;
+    }
+
+    .stop .dot {
+      grid-row: 1 / span 3;
+      margin: 0;
+    }
+
+    .stop > p {
+      grid-column: 2;
+    }
+
+    .stop-end {
+      padding-bottom: 0;
+    }
+
+    .stop-end .dot {
+      margin: -4px 0 0 -4px;
+    }
+
+    .groups {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>

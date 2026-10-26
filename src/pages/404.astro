@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import { getDict } from '../i18n';
+
+const es = getDict('es');
+const en = getDict('en');
+---
+
+<Base t={es} title={`${es.notFound.title} · Nicolás Mazzilli`} description={es.notFound.text} noindex>
+  <main id="contenido" class="lost">
+    <div class="wrap">
+      <span class="via via-lg" aria-hidden="true"><span><small>{es.platformSign}</small>?</span></span>
+      <h1 class="lost-title">{es.notFound.title}</h1>
+      <p class="lost-text">{es.notFound.text}</p>
+      <a class="btn btn-primary" href={es.home}>{es.notFound.back}</a>
+      <div class="lost-en" lang="en">
+        <p class="lost-en-title">{en.notFound.title}</p>
+        <p>{en.notFound.text} <a class="link" href={en.home}>{en.notFound.back}</a></p>
+      </div>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .lost {
+    display: grid;
+    align-items: center;
+    min-height: 100svh;
+    padding-block: 64px;
+  }
+
+  .lost-title {
+    margin-top: 28px;
+    font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+    font-weight: 650;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .lost-text {
+    max-width: 36ch;
+    margin-block: 16px 32px;
+    color: var(--color-fg-2);
+    font-size: 1.25rem;
+  }
+
+  .lost-en {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-fg-3);
+    font-size: 0.9375rem;
+  }
+
+  .lost-en-title {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+</style>

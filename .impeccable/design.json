@@ -1,0 +1,755 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T01:25:18.077Z",
+  "title": "Design System: Nicolás Mazzilli · Estación",
+  "extensions": {
+    "colorMeta": {
+      "adif": {
+        "role": "primary",
+        "displayName": "Azul Adif",
+        "canonical": "#0d3b91",
+        "tonalRamp": [
+          "#060b16",
+          "#112344",
+          "#1d3d78",
+          "#2958b1",
+          "#487ad6",
+          "#729eec",
+          "#aac5f4",
+          "#e8effa"
+        ]
+      },
+      "adif-deep": {
+        "role": "primary",
+        "displayName": "Azul Adif profundo",
+        "canonical": "#082d72",
+        "tonalRamp": [
+          "#060b14",
+          "#14233f",
+          "#233e6f",
+          "#335ba4",
+          "#527cc8",
+          "#7a9ee0",
+          "#aec5ed",
+          "#e9eff8"
+        ]
+      },
+      "adif-soft": {
+        "role": "primary",
+        "displayName": "Azul Adif lavado",
+        "canonical": "#e8eef9",
+        "tonalRamp": [
+          "#0a0b0c",
+          "#222428",
+          "#3c4046",
+          "#595e67",
+          "#787d87",
+          "#9a9fa7",
+          "#c1c4c9",
+          "#eeeef0"
+        ]
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "Ámbar de servicio",
+        "canonical": "#ffb71b",
+        "tonalRamp": [
+          "#120901",
+          "#322001",
+          "#553a00",
+          "#7b5602",
+          "#a37307",
+          "#cc931d",
+          "#e1bf88",
+          "#f5ede1"
+        ]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Blanco frío",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "bg-subtle": {
+        "role": "neutral",
+        "displayName": "Blanco niebla",
+        "canonical": "#f4f6f9",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#232425",
+          "#3f4041",
+          "#5c5e60",
+          "#7c7d80",
+          "#9d9ea1",
+          "#c3c4c5",
+          "#eeeeef"
+        ]
+      },
+      "row-hover": {
+        "role": "neutral",
+        "displayName": "Reflejo de fila",
+        "canonical": "#f7f9fc",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#232425",
+          "#3f4041",
+          "#5c5e60",
+          "#7c7d80",
+          "#9d9ea1",
+          "#c3c4c5",
+          "#eeeeef"
+        ]
+      },
+      "tile": {
+        "role": "neutral",
+        "displayName": "Gris ficha",
+        "canonical": "#eef1f6",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#232426",
+          "#3e4043",
+          "#5b5e62",
+          "#7b7d82",
+          "#9c9ea2",
+          "#c3c4c6",
+          "#eeeeef"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta azul noche",
+        "canonical": "#0b1526",
+        "tonalRamp": [
+          "#0a0b0e",
+          "#1f242c",
+          "#38404e",
+          "#525e73",
+          "#717e94",
+          "#939fb2",
+          "#bdc5d0",
+          "#edeef1"
+        ]
+      },
+      "ink-hover": {
+        "role": "neutral",
+        "displayName": "Tinta levantada",
+        "canonical": "#1d2a40",
+        "tonalRamp": [
+          "#090b0f",
+          "#1e242e",
+          "#364051",
+          "#4f5e77",
+          "#6e7e98",
+          "#919fb6",
+          "#bcc5d3",
+          "#eceef2"
+        ]
+      },
+      "ink-busy": {
+        "role": "neutral",
+        "displayName": "Tinta en espera",
+        "canonical": "#36415a",
+        "tonalRamp": [
+          "#0a0b0f",
+          "#1f242e",
+          "#374052",
+          "#515d78",
+          "#707d99",
+          "#939eb7",
+          "#bdc4d3",
+          "#edeef2"
+        ]
+      },
+      "fg-2": {
+        "role": "neutral",
+        "displayName": "Pizarra",
+        "canonical": "#46516a",
+        "tonalRamp": [
+          "#0a0b0e",
+          "#20242e",
+          "#384051",
+          "#525d77",
+          "#717d98",
+          "#949eb6",
+          "#bec4d2",
+          "#edeef2"
+        ]
+      },
+      "fg-3": {
+        "role": "neutral",
+        "displayName": "Pizarra clara",
+        "canonical": "#5a6478",
+        "tonalRamp": [
+          "#0a0b0e",
+          "#20242c",
+          "#39404d",
+          "#545e72",
+          "#737d92",
+          "#969fb1",
+          "#bfc4cf",
+          "#edeef1"
+        ]
+      },
+      "fg-muted": {
+        "role": "neutral",
+        "displayName": "Gris apagado",
+        "canonical": "#7d869a",
+        "tonalRamp": [
+          "#0a0b0e",
+          "#21242b",
+          "#3a404c",
+          "#555e70",
+          "#747d91",
+          "#979eb0",
+          "#bfc4cf",
+          "#edeef1"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Junta fina",
+        "canonical": "#e5e9f0",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#232426",
+          "#3d4044",
+          "#5a5e64",
+          "#7a7d84",
+          "#9b9ea4",
+          "#c2c4c7",
+          "#eeeeef"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Junta marcada",
+        "canonical": "#d4dae4",
+        "tonalRamp": [
+          "#0a0b0c",
+          "#222427",
+          "#3c4046",
+          "#595e66",
+          "#787e87",
+          "#9a9fa6",
+          "#c1c4c9",
+          "#eeeef0"
+        ]
+      },
+      "field-line": {
+        "role": "neutral",
+        "displayName": "Borde de campo",
+        "canonical": "#7d869a",
+        "tonalRamp": [
+          "#0a0b0e",
+          "#21242b",
+          "#3a404c",
+          "#555e70",
+          "#747d91",
+          "#979eb0",
+          "#bfc4cf",
+          "#edeef1"
+        ]
+      },
+      "scroll": {
+        "role": "neutral",
+        "displayName": "Riel",
+        "canonical": "#bcc5d4",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#212429",
+          "#3b4049",
+          "#565e6b",
+          "#757e8c",
+          "#989fab",
+          "#c0c4cc",
+          "#edeef0"
+        ]
+      },
+      "frame-bar": {
+        "role": "neutral",
+        "displayName": "Barra de navegador",
+        "canonical": "#eff2f6",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#232425",
+          "#3e4042",
+          "#5b5e61",
+          "#7b7d81",
+          "#9c9fa2",
+          "#c3c4c6",
+          "#eeeeef"
+        ]
+      },
+      "frame-dot": {
+        "role": "neutral",
+        "displayName": "Botón de ventana",
+        "canonical": "#d6dbe3",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#222427",
+          "#3d4045",
+          "#5a5e65",
+          "#797e85",
+          "#9b9fa5",
+          "#c2c4c8",
+          "#eeeeef"
+        ]
+      },
+      "phone": {
+        "role": "neutral",
+        "displayName": "Carcasa de móvil",
+        "canonical": "#111622",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#21242a",
+          "#3b404a",
+          "#575e6c",
+          "#767d8d",
+          "#989eac",
+          "#c0c4cc",
+          "#edeef0"
+        ]
+      },
+      "nizz-water": {
+        "role": "neutral",
+        "displayName": "Agua NIZZ (prestado, solo tras sus capturas)",
+        "canonical": "#bfede7",
+        "tonalRamp": [
+          "#070c0c",
+          "#182826",
+          "#294643",
+          "#3c6762",
+          "#5c8782",
+          "#83a7a2",
+          "#b4c9c6",
+          "#ebf0ef"
+        ]
+      },
+      "on-dark": {
+        "role": "neutral",
+        "displayName": "Blanco sobre oscuro",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "ok": {
+        "role": "feedback",
+        "displayName": "Verde confirmado",
+        "canonical": "#11803a",
+        "tonalRamp": [
+          "#040e06",
+          "#072c12",
+          "#024e1f",
+          "#037130",
+          "#2f944c",
+          "#66b376",
+          "#a6d1ad",
+          "#e7f2e9"
+        ]
+      },
+      "ok-soft": {
+        "role": "feedback",
+        "displayName": "Verde lavado",
+        "canonical": "#dff3e6",
+        "tonalRamp": [
+          "#0a0c0a",
+          "#1f2622",
+          "#37433c",
+          "#516258",
+          "#708277",
+          "#93a399",
+          "#bdc7c1",
+          "#edefee"
+        ]
+      },
+      "danger": {
+        "role": "feedback",
+        "displayName": "Rojo aviso",
+        "canonical": "#b42318",
+        "tonalRamp": [
+          "#160604",
+          "#440f09",
+          "#76160e",
+          "#ad1a10",
+          "#d44536",
+          "#ed7665",
+          "#f8afa3",
+          "#fceae6"
+        ]
+      },
+      "danger-line": {
+        "role": "feedback",
+        "displayName": "Rojo borde",
+        "canonical": "#c4321f",
+        "tonalRamp": [
+          "#170604",
+          "#440e07",
+          "#771408",
+          "#ae1702",
+          "#d5432f",
+          "#ee7561",
+          "#f9afa1",
+          "#fceae6"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "«¿Hablamos?» y el título de la 404. Tope de 6rem."
+      },
+      "display-sign": {
+        "displayName": "Display de letrero",
+        "purpose": "El nombre «NIZZ» junto a su letrero de vía grande."
+      },
+      "flap": {
+        "displayName": "Fichas",
+        "purpose": "Solo el nombre del hero, en mayúsculas, una ficha split-flap por letra."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de sección (Proyectos, Trayectoria, Lo que uso)."
+      },
+      "title-lg": {
+        "displayName": "Title grande",
+        "purpose": "Rol del hero, qué es NIZZ y las frases de la secuencia."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Destino de cada salida, lugar de cada parada y título del formulario."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido; 1rem por debajo de 720 px."
+      },
+      "body-sm": {
+        "displayName": "Body pequeño",
+        "purpose": "Descripciones de parada, notas, pies y alertas."
+      },
+      "label": {
+        "displayName": "Rótulo",
+        "purpose": "Mayúsculas espaciadas solo dentro de objetos de estación: columnas del panel, «Ahora», «En servicio», «En GitHub», «Vía»."
+      },
+      "button": {
+        "displayName": "Botón",
+        "purpose": "Texto de botones; 0.9375rem en el pequeño y en copiar."
+      },
+      "figure": {
+        "displayName": "Cifra",
+        "purpose": "Geist Mono con tabular-nums: horas, fechas y el contador 1/3."
+      },
+      "figure-sign": {
+        "displayName": "Cifra de letrero",
+        "purpose": "Número de vía dentro del letrero."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-frame",
+        "value": "0 1px 2px rgb(11 21 38 / 0.06), 0 12px 24px -8px rgb(11 21 38 / 0.1), 0 40px 80px -24px rgb(11 21 38 / 0.2)",
+        "purpose": "Marco de navegador del hero: el objeto que más pesa."
+      },
+      {
+        "name": "shadow-panel",
+        "value": "0 1px 2px rgb(11 21 38 / 0.05), 0 10px 24px -10px rgb(11 21 38 / 0.12), 0 28px 56px -28px rgb(11 21 38 / 0.18)",
+        "purpose": "Panel de salidas."
+      },
+      {
+        "name": "shadow-phone",
+        "value": "0 2px 4px rgb(11 21 38 / 0.12), 0 24px 48px -12px rgb(11 21 38 / 0.35)",
+        "purpose": "Carcasa del móvil, superpuesta al marco."
+      },
+      {
+        "name": "shadow-shot",
+        "value": "0 1px 2px rgb(11 21 38 / 0.08), 0 12px 28px -12px rgb(11 21 38 / 0.25)",
+        "purpose": "Captura en el detalle de una salida."
+      },
+      {
+        "name": "shadow-ring-dot",
+        "value": "0 0 0 1px rgb(11 21 38 / 0.18)",
+        "purpose": "Contorno del punto ámbar sobre blanco."
+      },
+      {
+        "name": "ring-inset",
+        "value": "inset 0 0 0 1px var(--color-line-strong)",
+        "purpose": "Borde del botón secundario (rojo borde en la alerta): sustituye al borde para no sumar borde y sombra."
+      },
+      {
+        "name": "ring-focus-field",
+        "value": "0 0 0 3px color-mix(in srgb, var(--color-adif) 16%, transparent)",
+        "purpose": "Foco de los campos, junto al borde Adif; en rojo borde si el campo es inválido."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Curva por defecto de los cambios de estado."
+      },
+      {
+        "name": "ease-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Entradas: contenido del detalle, toast y barra de progreso actual."
+      },
+      {
+        "name": "ease-spring",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "purpose": "Rebote de un paso: solo la caída final de las fichas y los segundos del reloj."
+      },
+      {
+        "name": "duration-press",
+        "value": "160ms",
+        "purpose": "Pulsación: scale(0.97) en botones y copiar."
+      },
+      {
+        "name": "duration-base",
+        "value": "200ms",
+        "purpose": "Hover de color, fondo y anillo."
+      },
+      {
+        "name": "duration-open",
+        "value": "300ms",
+        "purpose": "Apertura del detalle de una salida (grid-template-rows 0fr → 1fr)."
+      },
+      {
+        "name": "duration-close",
+        "value": "180ms",
+        "purpose": "Cierre del detalle."
+      },
+      {
+        "name": "flap-flip",
+        "value": "Web Animations API: translateY(-100%) → 0; 4–11 letras al azar de 60ms linear cada 62ms; caída final 280ms con ease-spring; inicio a 180ms + 34ms × índice",
+        "purpose": "Fichas split-flap del nombre. El texto final está en el HTML; no corre con movimiento reducido."
+      },
+      {
+        "name": "clock-second",
+        "value": "Web Animations API: translateY(-100%) → 0, 220ms con ease-spring",
+        "purpose": "Caída de los segundos del reloj; parado con la pestaña oculta o con movimiento reducido."
+      },
+      {
+        "name": "line-steps",
+        "value": "scaleX (scaleY en móvil) 0 → 1, 1100ms steps(4)",
+        "purpose": "La línea de Cercanías avanza parada a parada la primera vez que entra en pantalla."
+      },
+      {
+        "name": "board-detail",
+        "value": "grid-template-rows 0fr → 1fr; contenido: opacity 280ms (+60ms) y translateY(-10px) → 0 con ease-expo (+40ms)",
+        "purpose": "Detalle de una salida. Sin JS, abierto; con movimiento reducido, sin altura ni desplazamiento animados."
+      },
+      {
+        "name": "story-screen",
+        "value": "GSAP + ScrollTrigger: clip-path inset(100% 0 0 0) → inset(0), blur(6px) → 0, scale 1.04 → 1 en 0.7s expo.out; la anterior a scale 0.94 y opacity 0.5 en 0.5s power2.out",
+        "purpose": "Cambio de pantalla del móvil fijo de NIZZ (≥1024 px, al cruzar el 55 % de la ventana). Con movimiento reducido: fundido de 200 ms."
+      },
+      {
+        "name": "story-progress",
+        "value": "width 28px → 44px en 400ms con ease-expo; color 300ms",
+        "purpose": "Barra de progreso del paso actual de la secuencia."
+      },
+      {
+        "name": "toast",
+        "value": "translate(-50%, 16px) → 0 en 300ms con ease-expo; opacity 200ms",
+        "purpose": "Aviso «Email copiado»."
+      },
+      {
+        "name": "arrow-nudge",
+        "value": "translate 2px, 200ms con ease-out",
+        "purpose": "Icono de los enlaces con flecha (↗ en diagonal, ↓ en vertical)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "brand-name",
+        "value": "420px"
+      },
+      {
+        "name": "tablet",
+        "value": "720px"
+      },
+      {
+        "name": "desktop",
+        "value": "1024px"
+      },
+      {
+        "name": "clock",
+        "value": "1101px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Tinta con texto blanco: la acción de contacto («Escríbeme», «Enviar mensaje»).",
+      "html": "<button class=\"ds-btn ds-btn-primary\" type=\"button\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"></rect><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"></path></svg>Escríbeme</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 0; border-radius: var(--radius-lg); font: 500 1rem/1 var(--font-sans); letter-spacing: -0.01em; cursor: pointer; transition: transform var(--duration-press) var(--ease-out), background-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--color-adif); outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-btn:active { transform: none; } } .ds-btn-primary { background: var(--color-ink); color: var(--color-on-dark); } .ds-btn-primary:hover { background: var(--color-ink-hover); } .ds-btn-primary:disabled { background: var(--color-ink-busy); cursor: progress; } .ds-icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }"
+    },
+    {
+      "name": "Botón secundario",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Blanco con anillo interior de 1 px: «Copiar email».",
+      "html": "<button class=\"ds-btn ds-btn-secondary\" type=\"button\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\"></rect><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"></path></svg>Copiar email</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 0; border-radius: var(--radius-lg); font: 500 1rem/1 var(--font-sans); letter-spacing: -0.01em; cursor: pointer; transition: transform var(--duration-press) var(--ease-out), background-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid var(--color-adif); outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-btn:active { transform: none; } } .ds-btn-secondary { background: var(--color-bg); color: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-line-strong); } .ds-btn-secondary:hover { background: var(--color-bg-subtle); box-shadow: inset 0 0 0 1px var(--color-fg-muted); } .ds-icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }"
+    },
+    {
+      "name": "Campo de texto",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Etiqueta visible encima, borde de campo, foco Adif con anillo de 3 px y error en rojo bajo el campo.",
+      "html": "<div class=\"ds-fields\"><div class=\"ds-field\"><label for=\"ds-f-name\">Nombre</label><input id=\"ds-f-name\" type=\"text\" autocomplete=\"name\"></div><div class=\"ds-field\"><label for=\"ds-f-email\">Email</label><input id=\"ds-f-email\" type=\"email\" autocomplete=\"email\" aria-invalid=\"true\" aria-describedby=\"ds-f-email-err\"><p class=\"ds-field-error\" id=\"ds-f-email-err\">Necesito un email para contestarte.</p></div></div>",
+      "css": ".ds-fields { display: grid; gap: 18px; max-width: 420px; font-family: var(--font-sans); } .ds-field { display: grid; gap: 6px; } .ds-field label { color: var(--color-fg-2); font-size: 0.875rem; font-weight: 500; } .ds-field input { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid var(--color-field-line); border-radius: var(--radius-lg); background: var(--color-bg); color: var(--color-ink); font: 400 1rem/1.4 var(--font-sans); transition: border-color 150ms var(--ease-out), box-shadow 150ms var(--ease-out); } .ds-field input:hover { border-color: var(--color-fg-2); } .ds-field input:focus { outline: none; border-color: var(--color-adif); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-adif) 16%, transparent); } .ds-field input[aria-invalid=\"true\"] { border-color: var(--color-danger-line); } .ds-field input[aria-invalid=\"true\"]:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-danger-line) 16%, transparent); } .ds-field-error { margin: 0; color: var(--color-danger); font-size: 0.875rem; }"
+    },
+    {
+      "name": "Cabecera",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Marca NM en Adif, navegación, reloj de Alicante con punto ámbar y cifras en mono, idioma y botón pequeño.",
+      "html": "<header class=\"ds-header\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-brand-mark\" aria-hidden=\"true\">NM</span>Nicolás Mazzilli</a><div class=\"ds-header-end\"><nav class=\"ds-nav\" aria-label=\"Principal\"><a href=\"#\">NIZZ</a><a href=\"#\">Proyectos</a><a href=\"#\">Trayectoria</a></nav><p class=\"ds-clock\"><span class=\"ds-live-dot\" aria-hidden=\"true\"></span>Alicante<time class=\"ds-clock-time\">10:42:07</time></p><a class=\"ds-lang\" href=\"#\">EN</a><a class=\"ds-btn-small\" href=\"#\">Escríbeme</a></div></header>",
+      "css": ".ds-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; padding: 0 24px; background: color-mix(in srgb, var(--color-bg) 96%, transparent); border-bottom: 1px solid var(--color-line); font-family: var(--font-sans); } .ds-brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--color-ink); font-weight: 600; letter-spacing: -0.02em; text-decoration: none; white-space: nowrap; } .ds-brand-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--color-adif); color: var(--color-on-dark); font-size: 0.8125rem; font-weight: 600; transition: background-color var(--duration-base) var(--ease-out); } .ds-brand:hover .ds-brand-mark { background: var(--color-adif-deep); } .ds-header-end { display: flex; align-items: center; gap: 16px; } .ds-nav { display: flex; align-items: center; gap: 4px; } .ds-nav a, .ds-lang { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 12px; border-radius: var(--radius-md); color: var(--color-fg-2); font-size: 0.9375rem; font-weight: 500; text-decoration: none; transition: color var(--duration-base) var(--ease-out), background-color var(--duration-base) var(--ease-out); } .ds-lang { min-width: 44px; padding: 0 10px; font-size: 0.875rem; letter-spacing: 0.04em; } .ds-nav a:hover, .ds-lang:hover { color: var(--color-ink); background: var(--color-bg-subtle); } .ds-brand:focus-visible, .ds-nav a:focus-visible, .ds-lang:focus-visible, .ds-btn-small:focus-visible { outline: 2px solid var(--color-adif); outline-offset: 3px; } .ds-clock { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding-left: 16px; border-left: 1px solid var(--color-line); color: var(--color-fg-3); font-size: 0.8125rem; font-weight: 500; } .ds-live-dot { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--color-amber); box-shadow: var(--shadow-ring-dot); } .ds-clock-time { min-width: 8ch; color: var(--color-ink); font: 500 0.9375rem/1.3 var(--font-mono); font-variant-numeric: tabular-nums; } .ds-btn-small { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: var(--radius-md); background: var(--color-bg); color: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-line-strong); font: 500 0.9375rem/1 var(--font-sans); text-decoration: none; transition: background-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); } .ds-btn-small:hover { background: var(--color-bg-subtle); box-shadow: inset 0 0 0 1px var(--color-fg-muted); }"
+    },
+    {
+      "name": "Chips",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "«En servicio» en ámbar (lo vivo), etiquetas de tecnología no interactivas y la tecnología de «Lo que uso» con su tramo de línea Adif.",
+      "html": "<div class=\"ds-chips-demo\"><span class=\"ds-chip-live\">En servicio</span><ul class=\"ds-chips\"><li class=\"ds-chip\">Java</li><li class=\"ds-chip\">Spring Boot</li><li class=\"ds-chip\">React</li><li class=\"ds-chip\">PostgreSQL</li></ul><span class=\"ds-stack\">TypeScript</span></div>",
+      "css": ".ds-chips-demo { display: grid; justify-items: start; gap: 14px; padding: 20px; background: var(--color-bg-subtle); font-family: var(--font-sans); } .ds-chip-live { display: inline-flex; align-items: center; gap: 8px; min-height: 26px; padding: 0 10px 0 8px; border-radius: var(--radius-sm); background: var(--color-amber); color: var(--color-ink); font: 600 0.75rem/1 var(--font-sans); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; } .ds-chip-live::before { content: \"\"; width: 7px; height: 7px; border-radius: 2px; background: var(--color-ink); } .ds-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; } .ds-chip { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: 8px; background: var(--color-bg); color: var(--color-fg-2); font-size: 0.8125rem; font-weight: 500; line-height: 1; white-space: nowrap; } .ds-stack { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 16px 0 14px; border-radius: var(--radius-lg); background: var(--color-bg); color: var(--color-ink); font-size: 1rem; font-weight: 500; letter-spacing: -0.01em; } .ds-stack::before { content: \"\"; width: 16px; height: 4px; border-radius: 2px; background: var(--color-adif); }"
+    },
+    {
+      "name": "Letrero de vía",
+      "kind": "custom",
+      "refersTo": "via",
+      "description": "Cuadrado Adif con el número en Geist Mono: 44 px, grande de 76 px y la versión de fila (lavada en reposo, rellena al pasar o abrir).",
+      "html": "<div class=\"ds-vias\"><span class=\"ds-via\" role=\"img\" aria-label=\"Vía 1\"><span><small>Vía</small>1</span></span><span class=\"ds-via ds-via-lg\" role=\"img\" aria-label=\"Vía 1\"><span><small>Vía</small>1</span></span><span class=\"ds-via-row\">2</span><span class=\"ds-via-row ds-is-on\">3</span></div>",
+      "css": ".ds-vias { display: flex; align-items: center; gap: 16px; } .ds-via { display: inline-grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-adif); color: var(--color-on-dark); font: 600 1.375rem/1 var(--font-mono); } .ds-via > span { display: grid; justify-items: center; } .ds-via small { display: block; margin-bottom: 2px; font: 600 0.5rem/1 var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; } .ds-via-lg { width: 76px; height: 76px; border-radius: var(--radius-xl); font-size: 2.5rem; } .ds-via-lg small { margin-bottom: 4px; font-size: 0.6875rem; } .ds-via-row { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 9px; background: var(--color-adif-soft); color: var(--color-adif); font: 600 1rem/1 var(--font-mono); transition: background-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); } .ds-via-row:hover, .ds-via-row.ds-is-on { background: var(--color-adif); color: var(--color-on-dark); }"
+    },
+    {
+      "name": "Panel de salidas",
+      "kind": "card",
+      "refersTo": "board",
+      "description": "Los proyectos como salidas: cabecera Adif, fila «Ahora» en ámbar y filas que se abren.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-board-head\" aria-hidden=\"true\"><span>Salida</span><span>Destino</span><span>Información</span><span>Estado</span><span>Vía</span></div><div class=\"ds-row-lead\"><span class=\"ds-lead-now\">Ahora</span><span class=\"ds-lead-dest\">Tu equipo</span><span class=\"ds-lead-info\">Próxima salida</span><a class=\"ds-lead-btn\" href=\"#\">Escríbeme</a></div><button class=\"ds-row\" type=\"button\" aria-expanded=\"false\"><span class=\"ds-c-date\">06/26</span><span class=\"ds-c-dest\">Cortly</span><span class=\"ds-c-info\">Acorta enlaces y cuenta cuántas veces se abren, cuándo y desde qué web.</span><span class=\"ds-c-state\">En GitHub</span><span class=\"ds-c-via\"><span class=\"ds-via-row\">2</span><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"></path></svg></span></button></div>",
+      "css": ".ds-board { --cols: 96px minmax(140px, 190px) minmax(0, 1fr) 150px 88px; overflow: hidden; border-radius: var(--radius-2xl); background: var(--color-bg); box-shadow: var(--shadow-panel); color: var(--color-ink); font-family: var(--font-sans); } .ds-board-head, .ds-row-lead, .ds-row { display: grid; grid-template-columns: var(--cols); align-items: center; column-gap: 24px; } .ds-board-head { padding: 13px 24px; background: var(--color-adif); color: color-mix(in srgb, var(--color-on-dark) 82%, transparent); font-size: 0.75rem; font-weight: 500; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; } .ds-row-lead { grid-template-columns: 96px minmax(140px, 190px) minmax(0, 1fr) auto; padding: 16px 24px; background: var(--color-amber); color: var(--color-ink); } .ds-lead-now { font-size: 0.9375rem; font-weight: 600; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase; } .ds-lead-dest { font-size: 1.875rem; font-weight: 650; line-height: 1.05; letter-spacing: -0.03em; } .ds-lead-info { font-weight: 500; line-height: 1.35; } .ds-lead-btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; border-radius: var(--radius-lg); background: var(--color-ink); color: var(--color-on-dark); font: 500 1rem/1 var(--font-sans); text-decoration: none; transition: background-color var(--duration-base) var(--ease-out); } .ds-lead-btn:hover { background: var(--color-ink-hover); } .ds-lead-btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 3px; } .ds-row { width: 100%; min-height: 72px; padding: 12px 24px; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background-color var(--duration-base) var(--ease-out); } .ds-row:hover, .ds-row[aria-expanded=\"true\"] { background: var(--color-row-hover); } .ds-row:focus-visible { outline: 2px solid var(--color-adif); outline-offset: -3px; } .ds-c-date { color: var(--color-fg-3); font: 400 0.9375rem/1 var(--font-mono); font-variant-numeric: tabular-nums; } .ds-c-dest { font-size: 1.375rem; font-weight: 600; letter-spacing: -0.025em; } .ds-c-info { color: var(--color-fg-2); font-size: 1rem; line-height: 1.4; } .ds-c-state { color: var(--color-fg-2); font-size: 0.75rem; font-weight: 500; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase; } .ds-c-via { display: flex; align-items: center; justify-content: space-between; gap: 8px; } .ds-via-row { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 9px; background: var(--color-adif-soft); color: var(--color-adif); font: 600 1rem/1 var(--font-mono); transition: background-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out); } .ds-row:hover .ds-via-row, .ds-row:focus-visible .ds-via-row, .ds-row[aria-expanded=\"true\"] .ds-via-row { background: var(--color-adif); color: var(--color-on-dark); } .ds-icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; } .ds-c-via .ds-icon { color: var(--color-fg-3); transition: transform 250ms var(--ease-out), color var(--duration-base) var(--ease-out); } .ds-row[aria-expanded=\"true\"] .ds-c-via .ds-icon { transform: rotate(45deg); color: var(--color-adif); }"
+    },
+    {
+      "name": "Fichas split-flap",
+      "kind": "custom",
+      "refersTo": "flap-tile",
+      "description": "Una ficha clara por letra, juntas para que se lea el nombre; la letra cae con un rebote de un paso (en esta muestra, al pasar el ratón).",
+      "html": "<p class=\"ds-flaps\" aria-label=\"Nicolás\"><span class=\"ds-flap\" aria-hidden=\"true\" style=\"--i: 0\"><span>N</span></span><span class=\"ds-flap\" aria-hidden=\"true\" style=\"--i: 1\"><span>I</span></span><span class=\"ds-flap\" aria-hidden=\"true\" style=\"--i: 2\"><span>C</span></span><span class=\"ds-flap\" aria-hidden=\"true\" style=\"--i: 3\"><span>O</span></span><span class=\"ds-flap\" aria-hidden=\"true\" style=\"--i: 4\"><span>L</span></span><span class=\"ds-flap\" aria-hidden=\"true\" style=\"--i: 5\"><span>Á</span></span><span class=\"ds-flap\" aria-hidden=\"true\" style=\"--i: 6\"><span>S</span></span></p>",
+      "css": ".ds-flaps { display: flex; gap: 3px; margin: 0; color: var(--color-ink); font: 600 clamp(2.5rem, 0.9rem + 4.4vw, 4.5rem)/1 var(--font-sans); letter-spacing: 0; } .ds-flap { position: relative; display: grid; place-items: center; min-width: 0.62em; height: 1.2em; padding-inline: 0.07em; padding-top: 0.06em; border-radius: 0.1em; background: var(--color-tile); overflow: hidden; } .ds-flap::after { content: \"\"; position: absolute; inset-inline: 0; top: 50%; z-index: 2; height: 1px; background: var(--color-bg); box-shadow: 0 -1px 0 color-mix(in srgb, var(--color-ink) 5%, transparent); } .ds-flap > span { display: block; } .ds-flaps:hover .ds-flap > span { animation: ds-flap-drop 280ms var(--ease-spring) both; animation-delay: calc(var(--i) * 34ms); } @keyframes ds-flap-drop { from { transform: translateY(-100%); } to { transform: translateY(0); } } @media (prefers-reduced-motion: reduce) { .ds-flaps:hover .ds-flap > span { animation: none; } }"
+    },
+    {
+      "name": "Línea de Cercanías",
+      "kind": "custom",
+      "description": "La trayectoria como una línea: vía en junta marcada, tramo recorrido en Adif, parada actual en ámbar y destino final «Tu empresa». Avanza a saltos con steps(4) (en esta muestra, al pasar el ratón).",
+      "html": "<div class=\"ds-line-wrap\"><span class=\"ds-track\" aria-hidden=\"true\"></span><span class=\"ds-fill\" aria-hidden=\"true\"></span><ol class=\"ds-line\"><li class=\"ds-stop\"><span class=\"ds-dot\" aria-hidden=\"true\"></span><p class=\"ds-when\">Mar – jun 2023</p><p class=\"ds-where\">El Corte Inglés</p></li><li class=\"ds-stop\"><span class=\"ds-dot\" aria-hidden=\"true\"></span><p class=\"ds-when\">2024 – 2026</p><p class=\"ds-where\">IES San Vicente</p></li><li class=\"ds-stop\"><span class=\"ds-dot\" aria-hidden=\"true\"></span><p class=\"ds-when\">Mar – jun 2026</p><p class=\"ds-where\">Colorful</p></li><li class=\"ds-stop ds-stop-now\"><span class=\"ds-dot\" aria-hidden=\"true\"></span><p class=\"ds-when\">Sep 2026 – hoy</p><p class=\"ds-where\">NIZZ</p></li><li class=\"ds-stop ds-stop-end\"><span class=\"ds-dot\" aria-hidden=\"true\"></span><p class=\"ds-when-end\">Próxima parada</p><p class=\"ds-where\">Tu empresa</p></li></ol></div>",
+      "css": ".ds-line-wrap { --dot: 22px; --gap: 24px; position: relative; color: var(--color-ink); font-family: var(--font-sans); } .ds-line { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); margin: 0; padding: 0; list-style: none; } .ds-track, .ds-fill { position: absolute; top: calc(var(--dot) / 2 - 2px); left: calc(var(--dot) / 2); right: calc((100% - 4 * var(--gap)) / 5 - var(--dot) / 2); height: 4px; border-radius: 2px; } .ds-track { background: var(--color-line-strong); } .ds-fill { background: var(--color-adif); transform-origin: left center; } .ds-line-wrap:hover .ds-fill { animation: ds-line-run 1100ms steps(4) both; } @keyframes ds-line-run { from { transform: scaleX(0); } to { transform: scaleX(1); } } @media (prefers-reduced-motion: reduce) { .ds-line-wrap:hover .ds-fill { animation: none; } } .ds-stop { position: relative; display: flex; flex-direction: column; gap: 4px; } .ds-stop p { margin: 0; } .ds-dot { position: relative; z-index: 1; box-sizing: border-box; width: var(--dot); height: var(--dot); margin-bottom: 18px; border: 4px solid var(--color-adif); border-radius: 50%; background: var(--color-bg); } .ds-stop-now .ds-dot { background: var(--color-amber); } .ds-stop-end .ds-dot { width: 30px; height: 30px; margin: -4px 0 14px -4px; border-width: 7px; } .ds-when { color: var(--color-fg-3); font: 400 0.875rem/1.3 var(--font-mono); font-variant-numeric: tabular-nums; } .ds-when-end { color: var(--color-fg-3); font-size: 0.875rem; } .ds-where { font-size: 1.1875rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; } .ds-stop-end .ds-where { color: var(--color-adif); font-size: 1.5rem; letter-spacing: -0.03em; }"
+    },
+    {
+      "name": "Marco de navegador con móvil",
+      "kind": "custom",
+      "refersTo": "frame",
+      "description": "La prueba: captura de escritorio en un marco de navegador (nizz.es) con el móvil superpuesto; las capturas de NIZZ van dentro tal cual. Aquí, a la escala de móvil y con huecos en lugar de capturas.",
+      "html": "<div class=\"ds-shot\"><div class=\"ds-frame\"><div class=\"ds-frame-bar\" aria-hidden=\"true\"><span class=\"ds-frame-dots\"><i></i><i></i><i></i></span><span class=\"ds-frame-url\"><svg class=\"ds-icon-sm\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect width=\"18\" height=\"11\" x=\"3\" y=\"11\" rx=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg>nizz.es</span><span class=\"ds-frame-end\"></span></div><div class=\"ds-frame-body\"></div></div><div class=\"ds-phone\"><div class=\"ds-phone-screen\"></div></div></div>",
+      "css": ".ds-shot { position: relative; padding: 0 48px 36px 0; font-family: var(--font-sans); } .ds-frame { overflow: hidden; border-radius: var(--radius-xl); background: var(--color-bg); box-shadow: var(--shadow-frame); } .ds-frame-bar { display: flex; align-items: center; gap: 14px; height: 40px; padding: 0 14px; background: var(--color-frame-bar); } .ds-frame-dots { display: flex; gap: 6px; } .ds-frame-dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--color-frame-dot); } .ds-frame-url { display: flex; flex: 1; align-items: center; justify-content: center; gap: 6px; max-width: 340px; height: 24px; margin-inline: auto; border-radius: var(--radius-sm); background: var(--color-bg); color: var(--color-fg-3); font: 400 0.75rem/1 var(--font-sans); } .ds-icon-sm { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; } .ds-frame-end { width: 48px; } .ds-frame-body { aspect-ratio: 16 / 9; background: var(--color-bg-subtle); } .ds-phone { position: absolute; right: 0; bottom: 0; width: 118px; padding: 5px; border-radius: 22px; background: var(--color-phone); box-shadow: var(--shadow-phone); } .ds-phone-screen { aspect-ratio: 390 / 844; border-radius: 18px; background: var(--color-nizz-water); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La estación a la luz del día",
+    "overview": "La web es una estación de Cercanías de Alicante a media mañana: blanco frío, tinta azul noche y una señalética que se lee de lejos. Nicolás es un tren a punto de salir y cada proyecto es una salida con su vía. El mundo se construye con objetos de estación reconocibles (el letrero de vía, el panel de salidas, la línea de Cercanías, las fichas split-flap del nombre y el reloj de Alicante) colocados sobre una página de producto clara, nunca con decoración temática añadida.\n\nLa densidad es media y se escanea: pocos bloques grandes separados por bandas de fondo a ancho completo, mucho aire entre secciones y grupos apretados dentro de cada una. La pieza más fuerte es la prueba: NIZZ en un marco de navegador con el móvil superpuesto. El color está racionado. El azul Adif rellena solo los objetos de estación, el ámbar marca solo lo que está pasando ahora y todo lo demás es tinta sobre blanco.\n\nEl movimiento es mecánico, como el de una estación: fichas que giran y caen con un rebote de un paso, una línea que avanza a saltos de parada en parada y un móvil fijo que cambia de pantalla. Todo el contenido está pintado desde el primer momento; el movimiento solo gira o desplaza lo que ya se ve. Rechazos confirmados: el hero sobre una rejilla de tarjetas iguales y el panel oscuro con neón.",
+    "keyCharacteristics": [
+      "Fondo claro y frío, sin modo oscuro (`color-scheme: light`).",
+      "Azul Adif como señalética; ámbar como «en directo».",
+      "Geist para todo el texto; Geist Mono solo para cifras.",
+      "Sombras suaves y largas solo en los objetos físicos: marco, panel, móvil y capturas.",
+      "Movimiento de estación: giro de ficha, salto de parada y cambio de pantalla.",
+      "Todo se lee sin JS y sin movimiento."
+    ],
+    "rules": [
+      {
+        "name": "Regla de lo vivo",
+        "body": "El ámbar solo marca lo que está pasando ahora: el reloj, la disponibilidad, «En servicio», la fila «Ahora» y la parada actual. Siempre con texto en tinta, nunca en blanco. Nada estático va en ámbar.",
+        "section": "colors"
+      },
+      {
+        "name": "Regla del objeto de estación",
+        "body": "El azul Adif rellena objetos de estación y nada más: letreros, cabecera del panel, línea, marca. En la interacción aparece solo como trazo (enlace, foco, selección, campo enfocado). La acción principal va en tinta, nunca en Adif.",
+        "section": "colors"
+      },
+      {
+        "name": "Regla del token",
+        "body": "Ningún hex, `rgb()` ni nombre de color suelto en los componentes: todo sale de `@theme` en `src/styles/global.css`. Los matices se hacen con `color-mix()` sobre un token (Adif al 12 %, 16 % o 35 %; blanco al 82 %; tinta al 5 %).",
+        "section": "colors"
+      },
+      {
+        "name": "Regla de la cifra",
+        "body": "Geist Mono solo para cifras que se leen como un horario: horas, fechas, número de vía y el contador «1/3». Siempre con `tabular-nums` y tracking 0. Nunca para palabras, URLs ni etiquetas que quieran parecer técnicas.",
+        "section": "typography"
+      },
+      {
+        "name": "Regla del rótulo",
+        "body": "Las mayúsculas espaciadas solo existen dentro de los objetos de estación: columnas del panel, «Ahora», «En servicio», «En GitHub» y «Vía». Nunca encima de un título.",
+        "section": "typography"
+      },
+      {
+        "name": "Regla del tracking",
+        "body": "Los titulares van de -0.025em a -0.04em, que es el tope; fichas y cifras van a 0.",
+        "section": "typography"
+      },
+      {
+        "name": "Regla de los objetos que pesan",
+        "body": "Solo proyectan sombra los objetos que existirían de verdad en una estación o sobre una mesa: el marco de navegador, el panel de salidas, el móvil y las capturas. Texto, formulario, chips y botones son planos.",
+        "section": "elevation"
+      },
+      {
+        "name": "Regla de una sola elevación",
+        "body": "Un contenedor lleva borde o sombra, nunca las dos cosas.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Usa** solo tokens de `@theme` para color, radio, sombra, curva y duración, y haz los matices con `color-mix()` sobre un token.",
+      "**Pon** la acción principal en tinta (`button-primary`) y la secundaria en blanco con anillo interior de 1 px.",
+      "**Reserva** el ámbar para lo que está vivo y acompáñalo siempre de texto en tinta.",
+      "**Numera** las salidas con el letrero de vía: vía 1 para NIZZ, 2–5 para el resto.",
+      "**Escribe** horas, fechas, vías y contadores en Geist Mono con `tabular-nums`.",
+      "**Deja** el contenido completo en el HTML: las animaciones solo giran o desplazan lo que ya está pintado; sin JS el detalle del panel está abierto, la secuencia de NIZZ está apilada y la línea, dibujada.",
+      "**Da** a cada control al menos `spacing.tap` de alto con ratón y `spacing.tap-touch` (48 px) en ≤1023 px o con puntero grueso.",
+      "**Respeta** `prefers-reduced-motion`: fuera desplazamientos, escalas y rebotes; se quedan los cambios de color y opacidad, y un fundido de 200 ms en la secuencia de NIZZ.",
+      "**Separa** las secciones con bandas de fondo a ancho completo (blanco / niebla) con corte duro.",
+      "**Tematiza** las superficies del navegador: selección y caret en Adif, scrollbar en riel, foco con anillo Adif de 2 px."
+    ],
+    "donts": [
+      "**No pongas** hex, `rgb()` ni nombres de color sueltos en los componentes.",
+      "**No uses** Geist Mono para palabras, URLs ni etiquetas para que algo parezca técnico.",
+      "**No pintes** de ámbar nada estático ni pongas texto blanco sobre ámbar.",
+      "**No rellenes** botones ni fondos de sección con azul Adif.",
+      "**No pongas** etiquetas ni rótulos en mayúsculas encima de los títulos. La pastilla de estado del hero no es un rótulo: es el único indicador de disponibilidad en directo y no se replica.",
+      "**No uses** el rebote (`--ease-spring`) fuera de las fichas del nombre y los segundos del reloj.",
+      "**No combines** borde y sombra en un mismo contenedor ni pases de 16 px de radio en un contenedor.",
+      "**No imites** la marca de NIZZ (teal, Bricolage Grotesque, bordes de 2 px, sombras duras desplazadas): vive solo dentro de sus capturas.",
+      "**No montes** los proyectos como una rejilla de tarjetas iguales: son filas de un panel de salidas.",
+      "**No pases** de -0.04em de tracking ni de 6rem en display."
+    ]
+  }
+}

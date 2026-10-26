@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteHeader from './SiteHeader.astro';
+import Hero from './Hero.astro';
+import Nizz from './Nizz.astro';
+import Board from './Board.astro';
+import Journey from './Journey.astro';
+import Contact from './Contact.astro';
+import SiteFooter from './SiteFooter.astro';
+import Toast from './Toast.astro';
+import type { Dict } from '../i18n/es';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+---
+
+<Base t={t}>
+  <SiteHeader t={t} />
+  <main id="contenido" tabindex="-1">
+    <Hero t={t} />
+    <Nizz t={t} />
+    <Board t={t} />
+    <Journey t={t} />
+    <Contact t={t} />
+  </main>
+  <SiteFooter t={t} />
+  <Toast t={t} />
+</Base>
+
+<script>
+  import { initFlaps } from '../scripts/motion';
+
+  void initFlaps();
+</script>

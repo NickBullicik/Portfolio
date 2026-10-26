@@ -1,0 +1,502 @@
+---
+import { Image } from 'astro:assets';
+import { projects } from '../data/projects';
+import { fill } from '../i18n';
+import type { Dict } from '../i18n/es';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+const [colDate, colDest, colInfo, colState, colVia] = t.projects.columns;
+---
+
+<section class="section" id="proyectos" aria-labelledby="proyectos-title">
+  <div class="wrap">
+    <div class="projects-head">
+      <h2 class="h2" id="proyectos-title">{t.projects.title}</h2>
+      <p>{t.projects.intro}</p>
+    </div>
+
+    <div class="board">
+      <div class="board-head" aria-hidden="true">
+        <span>{colDate}</span><span>{colDest}</span><span>{colInfo}</span><span>{colState}</span><span>{colVia}</span>
+      </div>
+      <div class="row-lead">
+        <span class="lead-now">{t.projects.now}</span>
+        <p class="lead-dest">{t.projects.yourTeam}</p>
+        <p class="lead-info">{t.projects.next}</p>
+        <div class="lead-actions">
+          <a class="btn btn-primary" href="#contacto"
+            ><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>{t.writeMe}</a
+          >
+        </div>
+      </div>
+      <ul class="rows">
+        <li class="row row-nizz">
+          <a class="row-head" href="#nizz" aria-describedby="nizz-goto">
+            <span class="c-date mono"><span class="sr-only">{t.projects.since} </span>10/26</span>
+            <span class="c-dest" translate="no">NIZZ</span>
+            <span class="c-info">{t.projects.info.nizz}</span>
+            <span class="c-state"><span class="chip-live">{t.inService}</span></span>
+            <span class="c-via"
+              ><span class="via"><span class="sr-only">{t.platform} </span>1</span><svg class="icon" aria-hidden="true"
+                ><use href="#i-up"></use></svg
+              ></span
+            >
+          </a>
+          <span class="sr-only" id="nizz-goto">{t.projects.goToNizz}</span>
+        </li>
+        {
+          projects.map((project) => (
+            <li class="row" data-row>
+              <button class="row-head" type="button" aria-expanded="true" aria-controls={`d-${project.slug}`}>
+                <span class="c-date mono">
+                  <span class="sr-only">{t.projects.since} </span>
+                  {project.date}
+                </span>
+                <span class="c-dest" translate="no">{project.name}</span>
+                <span class="c-info">{t.projects.info[project.slug]}</span>
+                <span class="c-state">{t.projects.onGitHub}</span>
+                <span class="c-via">
+                  <span class="via">
+                    <span class="sr-only">{t.platform} </span>
+                    {project.via}
+                  </span>
+                  <svg class="icon icon-plus" aria-hidden="true">
+                    <use href="#i-plus" />
+                  </svg>
+                </span>
+              </button>
+              <div class="row-detail" id={`d-${project.slug}`}>
+                <div class:list={['detail-inner', { 'no-shot': !project.image }]}>
+                  <div class="detail-text">
+                    <ul class="chips" translate="no" aria-label={fill(t.projects.techOf, { name: project.name })}>
+                      {project.tags.map((tag) => (
+                        <li class="chip">{tag}</li>
+                      ))}
+                    </ul>
+                    <a
+                      class="link link-arrow"
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener"
+                      aria-label={fill(t.projects.githubOf, { name: project.name })}
+                    >
+                      GitHub
+                      <svg class="icon icon-ne" aria-hidden="true">
+                        <use href="#i-ne" />
+                      </svg>
+                    </a>
+                  </div>
+                  {project.image && project.alt && (
+                    <figure class="detail-shot">
+                      <Image
+                        src={project.image}
+                        alt={t.alt[project.alt]}
+                        widths={[480, 720, 1000]}
+                        sizes="(min-width: 1024px) 560px, (min-width: 720px) 50vw, calc(100vw - 32px)"
+                      />
+                    </figure>
+                  )}
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .projects-head p {
+    max-width: 40ch;
+    color: var(--color-fg-3);
+  }
+
+  .board {
+    --cols: 96px minmax(140px, 190px) minmax(0, 1fr) 150px 88px;
+    margin-top: clamp(40px, 5vw, 56px);
+    overflow: hidden;
+    border-radius: var(--radius-2xl);
+    background: var(--color-bg);
+    box-shadow: var(--shadow-panel);
+  }
+
+  .board-head,
+  .row-head,
+  .row-lead,
+  .detail-inner {
+    display: grid;
+    grid-template-columns: var(--cols);
+    align-items: center;
+    column-gap: 24px;
+  }
+
+  .board-head {
+    padding: 13px 24px;
+    background: var(--color-adif);
+    color: color-mix(in srgb, var(--color-on-dark) 82%, transparent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .row-lead {
+    grid-template-columns: 96px minmax(140px, 190px) minmax(0, 1fr) auto;
+    padding: 16px 24px;
+    background: var(--color-amber);
+    color: var(--color-ink);
+  }
+
+  .lead-now {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lead-dest {
+    font-size: clamp(1.5rem, 1.2rem + 0.8vw, 1.875rem);
+    font-weight: 650;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .lead-info {
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .row-lead .btn-primary:focus-visible {
+    outline-color: var(--color-ink);
+  }
+
+  .rows > li + li {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .row-head {
+    width: 100%;
+    min-height: 72px;
+    padding: 12px 24px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color var(--duration-base) var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .row-head:hover {
+      background: var(--color-row-hover);
+    }
+  }
+
+  .row:global(.is-open) .row-head {
+    background: var(--color-row-hover);
+  }
+
+  .row-head:focus-visible {
+    outline-offset: -3px;
+    border-radius: 0;
+  }
+
+  .c-date {
+    color: var(--color-fg-3);
+    font-size: 0.9375rem;
+  }
+
+  .c-dest {
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  .c-info {
+    color: var(--color-fg-2);
+    font-size: 1rem;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .c-state {
+    color: var(--color-fg-2);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .c-via {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .c-via .via {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: var(--color-adif-soft);
+    color: var(--color-adif);
+    font-size: 1rem;
+    transition:
+      background-color var(--duration-base) var(--ease-out),
+      color var(--duration-base) var(--ease-out);
+  }
+
+  .row-head:hover .via,
+  .row-head:focus-visible .via,
+  .row:global(.is-open) .via,
+  .row-nizz .via {
+    background: var(--color-adif);
+    color: var(--color-on-dark);
+  }
+
+  .c-via .icon {
+    color: var(--color-fg-3);
+    transition:
+      transform 250ms var(--ease-out),
+      color var(--duration-base) var(--ease-out);
+  }
+
+  .row:global(.is-open) .icon-plus {
+    transform: rotate(45deg);
+    color: var(--color-adif);
+  }
+
+  /* El detalle se abre entero en un solo gesto. Sin JS se ve abierto. */
+  .row-detail {
+    display: grid;
+    grid-template-rows: 1fr;
+  }
+
+  :global(.js) .row-detail {
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--duration-close) var(--ease-out);
+  }
+
+  :global(.js) .row:global(.is-open) .row-detail {
+    grid-template-rows: 1fr;
+    transition: grid-template-rows var(--duration-open) var(--ease-out);
+  }
+
+  .detail-inner {
+    grid-template-columns: 96px minmax(140px, 190px) minmax(0, 1fr) minmax(0, 1.15fr);
+    align-items: start;
+    min-height: 0;
+    padding-inline: 24px;
+    overflow: hidden;
+  }
+
+  .detail-inner > * {
+    margin-block: 4px 28px;
+  }
+
+  :global(.js) .detail-inner > * {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+      opacity 120ms var(--ease-out),
+      transform var(--duration-close) var(--ease-out);
+  }
+
+  :global(.js) .row:global(.is-open) .detail-inner > * {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 280ms var(--ease-out) 60ms,
+      transform var(--duration-open) var(--ease-expo) 40ms;
+  }
+
+  .detail-text {
+    grid-column: 3;
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    padding-top: 6px;
+  }
+
+  .detail-shot {
+    grid-column: 4 / -1;
+    grid-row: 1;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-shot);
+  }
+
+  .no-shot .detail-text {
+    grid-column: 3 / -1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.js) .row-detail,
+    :global(.js) .row:global(.is-open) .row-detail {
+      transition: none;
+    }
+
+    :global(.js) .detail-inner > *,
+    :global(.js) .row:global(.is-open) .detail-inner > * {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .board {
+      --cols: 84px minmax(120px, 160px) minmax(0, 1fr) 130px 80px;
+    }
+  }
+
+  /* Por debajo de 1024 px cada salida se lee en filas: fecha, estado y vía arriba; destino e información debajo. */
+  @media (max-width: 1023px) {
+    .board-head {
+      display: none;
+    }
+
+    .row-lead {
+      grid-template-columns: 84px 1fr;
+      row-gap: 12px;
+    }
+
+    .lead-info,
+    .lead-actions {
+      grid-column: 2;
+    }
+
+    .row-head {
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas:
+        'date state via'
+        'dest dest dest'
+        'info info info';
+      column-gap: 12px;
+      row-gap: 6px;
+      padding: 16px 24px 18px;
+    }
+
+    .c-date {
+      grid-area: date;
+      font-size: 0.875rem;
+    }
+
+    .c-dest {
+      grid-area: dest;
+    }
+
+    .c-info {
+      grid-area: info;
+      max-width: 60ch;
+      font-size: 0.9375rem;
+    }
+
+    .c-state {
+      grid-area: state;
+    }
+
+    .c-via {
+      grid-area: via;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .detail-inner,
+    .no-shot {
+      grid-template-columns: 1fr;
+      row-gap: 16px;
+    }
+
+    .detail-inner > * {
+      margin-block: 0;
+    }
+
+    .detail-inner > :last-child {
+      margin-bottom: 22px;
+    }
+
+    .detail-text,
+    .detail-shot,
+    .no-shot .detail-text {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .detail-shot {
+      order: -1;
+      max-width: 640px;
+    }
+  }
+
+  @media (max-width: 719px) {
+    .board {
+      margin-inline: calc(-1 * var(--spacing-gutter) + 8px);
+      border-radius: var(--radius-xl);
+    }
+
+    .row-lead {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 18px 20px 20px;
+    }
+
+    .lead-now {
+      font-size: 0.8125rem;
+    }
+
+    .lead-info,
+    .lead-actions {
+      grid-column: 1;
+    }
+
+    .lead-actions {
+      margin-top: 10px;
+    }
+
+    .lead-actions .btn {
+      width: 100%;
+    }
+
+    .row-head {
+      padding: 16px 20px 18px;
+    }
+
+    .detail-inner,
+    .no-shot {
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-row]').forEach((row) => {
+    const button = row.querySelector<HTMLButtonElement>('button.row-head');
+    const detail = button && document.getElementById(button.getAttribute('aria-controls') ?? '');
+    if (!button || !detail) return;
+    // Cerrado, el detalle no se puede alcanzar con el teclado ni lo lee el lector de pantalla.
+    button.setAttribute('aria-expanded', 'false');
+    detail.inert = true;
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(open));
+      row.classList.toggle('is-open', open);
+      detail.inert = !open;
+    });
+  });
+</script>

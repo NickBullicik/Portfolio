@@ -1,92 +1,385 @@
 ---
+import CopyButton from './CopyButton.astro';
+import { site } from '../data/site';
+import { fill } from '../i18n';
+import type { Dict } from '../i18n/es';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+const c = t.contact;
+const [serverBefore, serverAfter] = fill(c.serverError, { email: '\u0000' }).split('\u0000');
 ---
 
-<section id="contact" class="py-24 px-6 border-t border-[#1F1F23]">
-  <div class="max-w-5xl mx-auto">
-    <div class="flex items-baseline gap-3 mb-3 fade-in">
-      <span class="font-mono text-sm text-[#4F8BFF]">0x03</span>
-      <h2 class="text-2xl font-semibold text-[#F2F2F0]">
-        <span data-lang="es">Contacto</span>
-        <span data-lang="en">Contact</span>
-      </h2>
+<section class="section" id="contacto" aria-labelledby="contacto-title">
+  <div class="wrap contact">
+    <div class="contact-side">
+      <h2 class="contact-title" id="contacto-title">{c.title}</h2>
+      <div class="contact-mail">
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <CopyButton class="copy" label={c.copy} doneLabel={c.copied} />
+      </div>
+      <a class="link link-arrow contact-gh" href={site.github} target="_blank" rel="noopener"
+        ><svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>{site.githubLabel}</a
+      >
     </div>
 
-    <p class="text-[#7A7A80] mb-10 max-w-xl fade-in text-sm">
-      <span data-lang="es">Abierto a oportunidades como desarrollador junior. Respondo en menos de 24h.</span>
-      <span data-lang="en">Open to junior developer opportunities. I reply in less than 24h.</span>
-    </p>
+    <form
+      class="form"
+      action="/api/contact"
+      method="post"
+      aria-labelledby="form-title"
+      data-form
+      data-sending={c.sending}
+      data-error-rate={c.rateLimited}
+    >
+      <h3 class="form-title" id="form-title">{c.formTitle}</h3>
+      <input type="hidden" name="lang" value={t.lang} />
+      <input type="hidden" name="ts" value="" data-ts />
 
-    <div class="fade-in border border-[#1F1F23] bg-[#131316] divide-y divide-[#1F1F23] max-w-2xl">
-      <div class="flex items-center justify-between p-4">
-        <div class="flex items-center gap-3 min-w-0">
-          <span class="font-mono text-xs text-[#7A7A80] uppercase tracking-wide w-16 shrink-0">email</span>
-          <a
-            href="mailto:nicolasmazzilli2004@gmail.com"
-            class="text-[#F2F2F0] hover:text-[#4F8BFF] transition-colors duration-150 truncate"
-          >
-            nicolasmazzilli2004@gmail.com
-          </a>
+      <div class="field">
+        <label for="f-name">{c.fields.name}</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="f-name-err" />
+        <p class="field-error" id="f-name-err" data-error-for="name" hidden>{c.errors.name}</p>
+      </div>
+      <div class="field">
+        <label for="f-email">{c.fields.email}</label>
+        <input
+          id="f-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          inputmode="email"
+          spellcheck="false"
+          maxlength="200"
+          required
+          aria-describedby="f-email-err"
+        />
+        <p class="field-error" id="f-email-err" data-error-for="email" data-empty={c.errors.emailEmpty} data-invalid={c.errors.emailInvalid} hidden>
+          {c.errors.emailEmpty}
+        </p>
+      </div>
+      <div class="field">
+        <label for="f-company">{c.fields.company}</label>
+        <input id="f-company" name="company" type="text" autocomplete="organization" maxlength="120" />
+      </div>
+      <div class="field">
+        <label for="f-message">{c.fields.message}</label>
+        <textarea id="f-message" name="message" rows="5" minlength="10" maxlength="4000" required aria-describedby="f-message-err"></textarea>
+        <p class="field-error" id="f-message-err" data-error-for="message" hidden>{c.errors.message}</p>
+      </div>
+      <div class="trap" aria-hidden="true">
+        <label for="f-web">{c.honeypot}</label>
+        <input id="f-web" name="web" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <div class="form-alert" role="alert" data-form-alert hidden>
+        <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+        <div>
+          <p data-alert-server>{serverBefore}<a class="link" href={`mailto:${site.email}`}>{site.email}</a>{serverAfter}</p>
+          <p data-alert-rate hidden>{c.rateLimited}</p>
         </div>
-        <button
-          id="copy-email-btn"
-          class="px-2.5 py-1 font-mono text-[11px] text-[#7A7A80] border border-[#2A2A30] hover:border-[#4F8BFF] hover:text-[#F2F2F0] transition-colors duration-150 shrink-0 ml-3"
-          aria-label="Copiar correo"
+      </div>
+
+      <div class="form-foot">
+        <button class="btn btn-primary btn-send" type="submit" data-send
+          ><span class="spinner" aria-hidden="true"></span><span data-send-label data-idle={c.send} data-retry={c.retry}>{c.send}</span></button
         >
-          <span id="copy-email-text" data-default-es="copiar" data-default-en="copy">
-            <span data-lang="es">copiar</span><span data-lang="en">copy</span>
-          </span>
-        </button>
       </div>
 
-      <div class="flex items-center justify-between p-4">
-        <div class="flex items-center gap-3">
-          <span class="font-mono text-xs text-[#7A7A80] uppercase tracking-wide w-16 shrink-0">github</span>
-          <a
-            href="https://github.com/NickBullicik"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-[#F2F2F0] hover:text-[#4F8BFF] transition-colors duration-150"
-          >
-            @NickBullicik
-          </a>
+      <div class="form-done" tabindex="-1" data-form-done hidden>
+        <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+        <div>
+          <p class="form-done-title">{c.sentTitle}</p>
+          <p>{c.sentText}</p>
+          <button class="link form-again" type="button" data-form-again>{c.again}</button>
         </div>
-        <span class="font-mono text-[11px] text-[#7A7A80]">&rarr;</span>
       </div>
-
-      <div class="flex items-center justify-between p-4">
-        <div class="flex items-center gap-3">
-          <span class="font-mono text-xs text-[#7A7A80] uppercase tracking-wide w-16 shrink-0">
-            <span data-lang="es">ubic.</span><span data-lang="en">loc.</span>
-          </span>
-          <span class="text-[#F2F2F0]">
-            <span data-lang="es">Alicante, Espa&ntilde;a</span>
-            <span data-lang="en">Alicante, Spain</span>
-          </span>
-        </div>
-        <span class="font-mono text-[11px] text-[#7A7A80]">
-          <span data-lang="es">presencial / remoto</span>
-          <span data-lang="en">on-site / remote</span>
-        </span>
-      </div>
-    </div>
+    </form>
   </div>
 </section>
 
-<script>
-  const btn = document.getElementById('copy-email-btn');
-  const text = document.getElementById('copy-email-text');
-  if (btn && text) {
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText('nicolasmazzilli2004@gmail.com');
-        const lang = document.documentElement.getAttribute('data-lang') || 'es';
-        text.innerHTML = lang === 'en' ? 'copied' : 'copiado';
-        setTimeout(() => {
-          text.innerHTML = '<span data-lang="es">copiar</span><span data-lang="en">copy</span>';
-        }, 1800);
-      } catch {
-        text.textContent = 'error';
-      }
-    });
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: start;
+    gap: 32px;
   }
+
+  .contact-side {
+    grid-column: 1 / span 6;
+  }
+
+  .contact-title {
+    font-size: clamp(3rem, 1.8rem + 4.4vw, 6rem);
+    font-weight: 650;
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+  }
+
+  .contact-mail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin-top: 28px;
+  }
+
+  .contact-mail :global(.copy) {
+    margin-left: -12px;
+  }
+
+  .contact-mail a {
+    font-size: clamp(1.25rem, 0.8rem + 1.6vw, 2.125rem);
+    font-weight: 550;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    overflow-wrap: anywhere;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+    text-decoration-color: var(--color-line-strong);
+    transition: text-decoration-color var(--duration-base) var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .contact-mail a:hover {
+      text-decoration-color: var(--color-adif);
+    }
+  }
+
+  .contact-gh {
+    margin-top: 16px;
+    color: var(--color-fg-2);
+    text-decoration-color: var(--color-line-strong);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .contact-gh:hover {
+      color: var(--color-ink);
+    }
+  }
+
+  .form {
+    grid-column: 8 / span 5;
+    display: grid;
+    gap: 18px;
+    padding: clamp(24px, 3vw, 32px);
+    border-radius: var(--radius-2xl);
+    background: var(--color-bg-subtle);
+  }
+
+  .form-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .field {
+    display: grid;
+    gap: 6px;
+  }
+
+  .field label {
+    color: var(--color-fg-2);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .field input,
+  .field textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-field-line);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font: 400 1rem/1.4 var(--font-sans);
+    transition:
+      border-color 150ms var(--ease-out),
+      box-shadow 150ms var(--ease-out);
+  }
+
+  .field textarea {
+    min-height: 128px;
+    resize: vertical;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .field input:hover,
+    .field textarea:hover {
+      border-color: var(--color-fg-2);
+    }
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--color-adif);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-adif) 16%, transparent);
+  }
+
+  .field input[aria-invalid='true'],
+  .field textarea[aria-invalid='true'] {
+    border-color: var(--color-danger-line);
+  }
+
+  .field input[aria-invalid='true']:focus,
+  .field textarea[aria-invalid='true']:focus {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-danger-line) 16%, transparent);
+  }
+
+  .field-error {
+    color: var(--color-danger);
+    font-size: 0.875rem;
+  }
+
+  /* Campo trampa: fuera de la vista y del teclado; los bots que lo rellenan se descartan en el servidor. */
+  .trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .form-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg);
+    box-shadow: inset 0 0 0 1px var(--color-danger-line);
+    color: var(--color-ink);
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  .form-alert[hidden] {
+    display: none;
+  }
+
+  .form-alert > .icon {
+    margin-top: 2px;
+    color: var(--color-danger);
+  }
+
+  .form-alert .link {
+    overflow-wrap: anywhere;
+  }
+
+  .form-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin-top: 4px;
+  }
+
+  .btn-send {
+    min-width: 168px;
+  }
+
+  .btn-send:disabled {
+    background: var(--color-ink-busy);
+    cursor: progress;
+  }
+
+  .spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid color-mix(in srgb, var(--color-on-dark) 35%, transparent);
+    border-top-color: var(--color-on-dark);
+    border-radius: 50%;
+  }
+
+  .btn-send:global(.is-sending) .spinner {
+    display: block;
+    animation: spin 700ms linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .form:global(.is-done) > :not(.form-done) {
+    display: none;
+  }
+
+  .form-done {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    outline: none;
+  }
+
+  .form-done[hidden] {
+    display: none;
+  }
+
+  .form-done > .icon {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    border-radius: 50%;
+    background: var(--color-ok-soft);
+    color: var(--color-ok);
+    stroke-width: 2.25;
+  }
+
+  .form-done-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .form-done p:not(.form-done-title) {
+    margin-top: 2px;
+    color: var(--color-fg-2);
+  }
+
+  .form-again {
+    min-height: var(--spacing-tap);
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  @media (max-width: 1023px) {
+    .contact-side,
+    .form {
+      grid-column: 1 / -1;
+    }
+
+    .form {
+      margin-top: 24px;
+    }
+  }
+
+  @media (max-width: 719px) {
+    .contact {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .form-foot .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  import { initContactForm } from '../scripts/contact-form';
+
+  initContactForm();
 </script>
